@@ -4,7 +4,13 @@ const cors = require("cors");
 const http = require("http");
 const port = process.env.PORT || 3002;
 
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200
+};
+
 const app = express();
+app.use(cors(corsOptions));
 const server = http.createServer(app);
 
 const io = socketIo(server, {
